@@ -137,13 +137,20 @@ int BinarySearchRecur(struct Array arr,int f, int l, int key){
 
 
 int Get(struct Array arr, int num){
-    return arr.A[num];
+    if(num >= 0  && num <arr.Length)
+    {
+        return arr.A[num];
+    }
+
+    return -1;
 }
 
-int Set(struct Array *arr, int index, int numb){
+void Set(struct Array *arr, int index, int numb){
+
+    if(index >= 0 && index < arr->Length){
     arr->A[index] = numb;
 
-    return 0;
+    }
 }
 
 int Max(struct Array arr){
@@ -173,6 +180,24 @@ int min(struct Array arr){
     return currmin;
 }
 
+int Sum(struct Array arr){
+    int res = 0;
+
+    for(int i =0; i < arr.Length; i++){
+        res += arr.A[i];
+    }
+
+    return res;
+}
+
+float Average(struct Array arr){
+    float Avg = 0;
+
+    Avg = Sum(arr)/arr.Length;
+
+    return Avg;
+}
+
 
 
 
@@ -193,6 +218,11 @@ int main(){
     cout<<"using Min Method"<<endl;
     cout<<min(arr)<<endl;
 
+    cout<<"sum of the array is::"<<endl;
+    cout<<Sum(arr)<<endl;
+
+    cout<<"Average of the elements in the array is ::"<<endl;
+    cout<<Average(arr)<<endl;
 
 
     Display(arr);

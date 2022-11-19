@@ -137,13 +137,20 @@ int BinarySearchRecur(struct Array arr,int f, int l, int key){
 
 
 int Get(struct Array arr, int num){
-    return arr.A[num];
+    if(num >= 0  && num <arr.Length)
+    {
+        return arr.A[num];
+    }
+
+    return -1;
 }
 
-int Set(struct Array *arr, int index, int numb){
+void Set(struct Array *arr, int index, int numb){
+
+    if(index >= 0 && index < arr->Length){
     arr->A[index] = numb;
 
-    return 0;
+    }
 }
 
 int Max(struct Array arr){
