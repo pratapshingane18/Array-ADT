@@ -241,7 +241,7 @@ void InsertInSortedArray(struct Array *arr, int pos, int num){
 }
 
 int CheckIfArrayIsSorted(struct Array arr){
-    for(int i = 0; i <arr.Length; i++){
+    for(int i = 0; i <arr.Length -1; i++){
         if(arr.A[i] > arr.A[i+1]){
             return false;
         }
