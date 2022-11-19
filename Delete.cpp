@@ -36,13 +36,34 @@ void Insert(struct Array *arr, int index, int x){
             arr->Length++;        }
     }
 }
+
+
+int Delete(struct Array *arr, int index ){
+    int x =0;
+    if(index >=0  && index < arr->Length){
+        x = arr->A[index];
+
+        for(int i=index;i < arr->Length -1; i++){
+            arr->A[i] = arr->A[i+1];
+
+        }
+
+            arr->Length--;
+
+            return x;
+
+        
+    }
+
+    return 0;
+}
 int main(){
 
     struct Array arr = {{2,3,4,5,6,7}, 20, 10};
     
-
+    cout<<"Element Deleted is::"<<Delete(&arr, 3)<<endl;;
     
-    Insert(&arr,6,20);
+    
     Display(arr);
 
 
@@ -56,40 +77,3 @@ int main(){
 
 
 
-// Creating array in Heap 
-
-// #include<iostream>
-// using namespace std;
-
-// struct Array
-// {
-//     int A[20];
-//     int size; 
-//     int Length;
-   
-
-// };
-
-// void Display(struct Array arr){
-//     cout<<"Elements of the array are:"<<endl;
-
-//     for(int i=0; i < arr.size; i++){
-//         cout<<arr.A[i]<<" ";
-//     }
-// }
-
-// int main(){
-
-//     struct Array arr = {{2,3,4,5,6,7}, 20, 5};
-    
-
-
-
-
-//     Display(arr);
-
-
-
-
-//     return 0;
-// }
