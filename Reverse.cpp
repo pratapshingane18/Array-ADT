@@ -180,28 +180,68 @@ int min(struct Array arr){
     return currmin;
 }
 
+int Sum(struct Array arr){
+    int res = 0;
+
+    for(int i =0; i < arr.Length; i++){
+        res += arr.A[i];
+    }
+
+    return res;
+}
+
+float Average(struct Array arr){
+    float Avg = 0;
+
+    Avg = Sum(arr)/arr.Length;
+
+    return Avg;
+}
+void Reverse(struct Array *arr){
+    int *B;
+    int i,j;
+    B = new int[arr->Length];
+    // B = (int *)malloc(arr->Length*sizeof(int));
+    for(i = arr->Length -1, j =0; i >=0; i--, j++){
+        B[j] = arr->A[i];
+
+    }
+
+
+    for(i=0; i <arr->Length; i++){
+        arr->A[i] = B[i];
+    }
+
+
+
+}
+
+
+void ReverseUsingSwap(struct Array *arr){
+
+    int i, j;
+
+    for(i =0, j = arr->Length -1; i <j; i++, j--){
+        Swap(&arr->A[i], &arr->A[j]);
+
+
+
+    }
+
+}
+
 
 
 
 int main(){
 
-    struct Array arr = {{2,3,4,5,6,7}, 20, 10};
-    cout<<"using Get Method"<<endl;
-    cout<<Get(arr,3)<<endl;
+    struct Array arr = {{2,3,4,5,6,7,10,12,13}, 20, 10};
+   
 
-    cout<<"using Set Method"<<endl;
-    Set(&arr,2,50);
-    cout<<Get(arr,2)<<endl;;
-
-    cout<<"using Max Method"<<endl;
-
-    cout<<Max(arr)<<endl;
-
-    cout<<"using Min Method"<<endl;
-    cout<<min(arr)<<endl;
-
-
-
+    Display(arr);
+    cout<<endl;
+    ReverseUsingSwap(&arr);
+    cout<<"Elements after reversing"<<endl;
     Display(arr);
     
 
