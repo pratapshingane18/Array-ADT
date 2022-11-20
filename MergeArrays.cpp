@@ -293,16 +293,85 @@ void Merge(struct Array *arr, struct Array *arr2 ){
 }
 
 
+struct Array* Union(struct Array *arr, struct Array *arr2){
+    struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
+    int i,j,k;
+    i=j=k = 0;
+    while(i < arr->Length  && j < arr2->Length){
+        if(arr->A[i] < arr2->A[j]){
+            arr3->A[k++] = arr->A[i++];
+        }
+
+        else if(arr2->A[j] < arr->A[i]){
+            arr3->A[k++] = arr2->A[j++];
+        }
+
+        else{
+            arr3->A[k++] = arr->A[i++];
+            j++;
+        }
+    }
+
+     for(; i < arr->Length; i++){
+        arr3->A[k++] = arr->A[i];
+
+    }
+
+    for(; j < arr2->Length; j++){
+        arr3->A[k++] = arr2->A[j];
+
+    }
+    arr3->Length =k;
+    arr3->size = 18;
+
+    return arr3;
+
+}
+
+struct Array* Intersection(struct Array *arr, struct Array *arr2){
+    struct Array *arr3 = (struct Array *)malloc(sizeof(struct Array));
+    int i,j,k;
+    i=j=k = 0;
+    while(i < arr->Length  && j < arr2->Length){
+        if(arr->A[i] < arr2->A[j]){
+             i++;
+        }
+
+        else if(arr2->A[j] < arr->A[i]){
+            j++;
+        }
+
+        else{
+            arr3->A[k++] = arr->A[i++];
+            j++;
+        }
+    }
+
+    //  for(; i < arr->Length; i++){
+    //     arr3->A[k++] = arr->A[i];
+
+    // }
+
+    // for(; j < arr2->Length; j++){
+    //     arr3->A[k++] = arr2->A[j];
+
+    // }
+    arr3->Length =k;
+    arr3->size = 18;
+
+    return arr3;
+
+}
 
 
 int main(){
 
-    struct Array arr = {{2,3,4,5,6,7,10,12}, 20, 8};
+    struct Array arr = {{2,3,4,5,6,7,10,11},20,8};
     struct Array arr2 = {{1,6,8,9,11,13,15,18},20,8};
     struct Array *arr3;
     
-    Merge(&arr,&arr2);
-    
+    arr3 = Intersection(&arr,&arr2);
+    Display(*arr3);
 
     return 0;
 }
